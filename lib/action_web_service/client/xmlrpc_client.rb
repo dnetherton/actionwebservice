@@ -1,4 +1,3 @@
-# encoding: UTF-8
 require 'uri'
 require 'xmlrpc/client'
 

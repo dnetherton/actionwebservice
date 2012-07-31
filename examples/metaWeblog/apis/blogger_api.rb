@@ -1,4 +1,3 @@
-# encoding: UTF-8
 #
 # see the blogger API spec at http://www.blogger.com/developers/api/1_docs/
 # note that the method signatures are subtly different to metaWeblog, they

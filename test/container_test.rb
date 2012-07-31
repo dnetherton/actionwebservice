@@ -1,12 +1,10 @@
-# encoding: UTF-8
-require 'abstract_unit'
+require File.dirname(__FILE__) + '/abstract_unit'
 
 module ContainerTest
   $immediate_service = Object.new
   $deferred_service = Object.new
   
   class DelegateContainer < ActionController::Base
-    acts_as_web_service
     web_service_dispatching_mode :delegated
   
     attr :flag
@@ -22,7 +20,6 @@ module ContainerTest
   end
   
   class DirectContainer < ActionController::Base
-    acts_as_web_service
     web_service_dispatching_mode :direct
   end
 

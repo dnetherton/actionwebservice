@@ -1,5 +1,4 @@
-# encoding: UTF-8
-require 'abstract_unit'
+require File.dirname(__FILE__) + '/abstract_unit'
 require 'webrick'
 require 'webrick/log'
 require 'singleton'
@@ -61,7 +60,6 @@ module ClientTest
   end
 
   class Container < ActionController::Base
-    acts_as_web_service
     web_service_api API
 
     attr_accessor :value_void

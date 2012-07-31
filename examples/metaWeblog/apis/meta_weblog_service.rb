@@ -1,4 +1,3 @@
-# encoding: UTF-8
 require 'meta_weblog_api'
 
 class MetaWeblogService < ActionWebService::Base

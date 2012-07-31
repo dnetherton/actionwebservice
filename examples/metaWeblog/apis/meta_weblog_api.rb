@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # 
 # here lie structures, cousins of those on http://www.xmlrpc.com/metaWeblog
 # but they don't necessarily the real world reflect

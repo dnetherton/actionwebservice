@@ -1,5 +1,4 @@
-# encoding: UTF-8
-require 'abstract_unit'
+require File.dirname(__FILE__) + '/abstract_unit'
 
 module InvocationTest
   class API < ActionWebService::API::Base
@@ -28,7 +27,6 @@ module InvocationTest
   InterceptorClass = Interceptor.new 
 
   class Service < ActionController::Base
-    acts_as_web_service 
     web_service_api API
 
     before_invocation :intercept_before, :except => [:no_before]

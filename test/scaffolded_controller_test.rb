@@ -1,5 +1,4 @@
-# encoding: UTF-8
-require 'abstract_unit'
+require File.dirname(__FILE__) + '/abstract_unit'
 
 ActionController::Routing::Routes.draw do |map|
   map.connect '', :controller => 'scaffolded'
@@ -29,7 +28,6 @@ class ScaffoldedControllerTestAPI < ActionWebService::API::Base
 end
 
 class ScaffoldedController < ActionController::Base
-  acts_as_web_service
   web_service_api ScaffoldedControllerTestAPI
   web_service_scaffold :scaffold_invoke
 

@@ -1,4 +1,3 @@
-# encoding: UTF-8
 require 'google_search_service'
 
 class SearchController < ApplicationController

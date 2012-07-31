@@ -1,4 +1,3 @@
-# encoding: UTF-8
 class SearchController < ApplicationController
   web_service_api :google_search
   wsdl_service_name 'GoogleSearch'

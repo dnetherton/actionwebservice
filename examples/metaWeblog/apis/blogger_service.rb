@@ -1,4 +1,3 @@
-# encoding: UTF-8
 require 'blogger_api'
 
 class BloggerService < ActionWebService::Base

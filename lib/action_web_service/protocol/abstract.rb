@@ -1,4 +1,3 @@
-# encoding: UTF-8
 module ActionWebService # :nodoc:
   module Protocol # :nodoc:
     class ProtocolError < ActionWebServiceError # :nodoc:
@@ -72,7 +71,7 @@ module ActionWebService # :nodoc:
       end
     end
 
-    class SimpleActionPackRequest < ActionDispatch::Request # :nodoc:
+    class SimpleActionPackRequest < ActionController::Request # :nodoc:
       def initialize(env = {})
         @env = env
         @qparams = {}

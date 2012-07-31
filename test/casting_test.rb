@@ -1,5 +1,4 @@
-# encoding: UTF-8
-require 'abstract_unit'
+require File.dirname(__FILE__) + '/abstract_unit'
 
 module CastingTest
   class A < ActionWebService::Struct; end
@@ -58,10 +57,9 @@ class TC_Casting < Test::Unit::TestCase
     assert_raises ArgumentError do
       cast_expects(:float, 'not a float')
     end
-    # not sure why this test fails but too lazy to find out why :-(
-#    assert_raises ArgumentError do
-#      cast_expects(:time, '111111111111111111111111111111111')
-#    end
+    assert_raises ArgumentError do
+      cast_expects(:time, '111111111111111111111111111111111')
+    end
     assert_raises ArgumentError do
       cast_expects(:datetime, '-1')
     end

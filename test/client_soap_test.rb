@@ -1,5 +1,4 @@
-# encoding: UTF-8
-require 'abstract_client'
+require File.dirname(__FILE__) + '/abstract_client'
 
 
 module ClientSoapTest
@@ -26,7 +25,6 @@ module ClientSoapTest
   end
 
   class ClientContainer < ActionController::Base
-    acts_as_web_service
     web_client_api :client, :soap, "http://localhost:#{PORT}/client/api", :api => ClientTest::API
     web_client_api :invalid, :null, "", :api => true
 

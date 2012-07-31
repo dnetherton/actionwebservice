@@ -1,6 +1,5 @@
-# encoding: UTF-8
 $:.unshift(File.dirname(__FILE__) + '/apis')
-require 'abstract_dispatcher'
+require File.dirname(__FILE__) + '/abstract_dispatcher'
 require 'wsdl/parser'
 
 class ActionController::Base
@@ -15,9 +14,9 @@ class ActionController::Base
   end
 end
 
-class AutoLoadController < ActionController::Base; acts_as_web_service; end
-class FailingAutoLoadController < ActionController::Base; acts_as_web_service; end
-class BrokenAutoLoadController < ActionController::Base; acts_as_web_service; end
+class AutoLoadController < ActionController::Base; end
+class FailingAutoLoadController < ActionController::Base; end
+class BrokenAutoLoadController < ActionController::Base; end
 
 class TC_DispatcherActionControllerSoap < Test::Unit::TestCase
   include DispatcherTest
@@ -70,13 +69,8 @@ class TC_DispatcherActionControllerSoap < Test::Unit::TestCase
 
   def test_utf8
     @direct_controller.web_service_exception_reporting = true
-    if RUBY_VERSION.to_f >= 1.9
-      utf8_string = Utf8String.force_encoding('UTF-8')
-    else
-      $KCODE = 'u' 
-      utf8_string = Utf8String.to_s
-    end
-    assert_equal(utf8_string, do_method_call(@direct_controller, 'TestUtf8'))
+    $KCODE = 'u'
+    assert_equal(Utf8String, do_method_call(@direct_controller, 'TestUtf8'))
     retval = SOAP::Processor.unmarshal(@response_body).body.response
     assert retval.is_a?(SOAP::SOAPString)
 
@@ -84,14 +78,11 @@ class TC_DispatcherActionControllerSoap < Test::Unit::TestCase
     # will be sent back as base64 by SOAP4R. By the time we get it here though,
     # it will be decoded back into a string. So lets read the base64 value
     # from the message body directly.
-    unless RUBY_VERSION.to_f >= 1.9
-      $KCODE = 'NONE'
-    end
+    $KCODE = 'NONE'
     do_method_call(@direct_controller, 'TestUtf8')
     retval = SOAP::Processor.unmarshal(@response_body).body.response
-    # not sure why this test fails but too lazy to find out why :-(
-#    assert retval.is_a?(SOAP::SOAPBase64)
-#    assert_equal "T25lIFdvcmxkIENhZsOp", retval.data.to_s
+    assert retval.is_a?(SOAP::SOAPBase64)
+    assert_equal "T25lIFdvcmxkIENhZsOp", retval.data.to_s
   end
 
   protected

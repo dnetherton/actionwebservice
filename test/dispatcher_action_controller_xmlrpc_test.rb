@@ -1,5 +1,4 @@
-# encoding: UTF-8
-require 'abstract_dispatcher'
+require File.dirname(__FILE__) + '/abstract_dispatcher'
 
 class TC_DispatcherActionControllerXmlRpc < Test::Unit::TestCase
   include DispatcherTest

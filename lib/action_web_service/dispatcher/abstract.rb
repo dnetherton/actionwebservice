@@ -1,4 +1,3 @@
-# encoding: UTF-8
 require 'benchmark'
 
 module ActionWebService # :nodoc:
@@ -12,7 +11,6 @@ module ActionWebService # :nodoc:
 
     def self.included(base) # :nodoc:
       base.class_inheritable_option(:web_service_dispatching_mode, :direct)
-      base.class_inheritable_option(:web_service_inflect_type, false)
       base.class_inheritable_option(:web_service_exception_reporting, true)
       base.send(:include, ActionWebService::Dispatcher::InstanceMethods)
     end
